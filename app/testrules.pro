@@ -1,0 +1,15 @@
+# Proguard rules that are applied to test code.
+-dontoptimize
+-dontobfuscate
+-dontshrink
+-ignorewarnings
+-dontwarn org.easymock.IArgumentMatcher
+-dontwarn org.mockito.internal.creation.bytebuddy.MockMethodDispatcher
+-dontwarn org.jmock.core.Constraint
+-dontwarn org.robolectric.RobolectricTestRunner
+-dontwarn org.objectweb.asm.ClassVisitor
+-dontwarn javax.servlet.ServletContextListener
+-dontwarn java.lang.instrument.ClassFileTransformer
+-dontwarn org.objectweb.asm.MethodVisitor
+-dontwarn android.net.http.**
+-dontwarn com.android.internal.http.multipart.MultipartEntity
