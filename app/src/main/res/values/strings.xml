@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Cocktail</string>
+    <string name="error_api_server">Server Error</string>
+    <string name="error_no_connection">No connection</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="retry">Retry</string>
+</resources>

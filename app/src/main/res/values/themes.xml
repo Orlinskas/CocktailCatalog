@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+
+    <style name="AppTheme.Main" parent="AppTheme">
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:itemTextAppearance">@style/actionTextAppearance</item>
+    </style>
+
+    <style name="InputTextTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="android:textSize">@dimen/text_regular</item>
+        <item name="colorControlNormal">@color/text_secondary</item>
+        <item name="colorControlActivated">@color/accent</item>
+        <item name="android:textColorHighlight">@color/text_error</item>
+        <item name="android:textColorLink">@color/text_error</item>
+    </style>
+
+    <style name="actionTextAppearance" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+</resources>
