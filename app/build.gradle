@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'project-report'
+apply plugin: 'com.google.firebase.crashlytics'
+apply from: "$project.rootDir/dependencies.gradle"
+
+android {
+    buildToolsVersion config.buildToolsVersion
+    compileSdkVersion config.targetSdkVersion
+
+    defaultConfig {
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    buildTypes {
+        debug {
+            versionNameSuffix "d"
+
+            manifestPlaceholders = [crashlyticsCollectionEnabled:"false"]
+            ext.enableCrashlytics = false
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+
+            manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
+
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testProguardFile('testrules.pro')
+        }
+    }
+}
