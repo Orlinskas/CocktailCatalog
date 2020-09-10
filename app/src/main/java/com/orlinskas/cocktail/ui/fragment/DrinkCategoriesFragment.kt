@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.orlinskas.cocktail.R
 import com.orlinskas.cocktail.databinding.FragmentDrinkCategoriesBinding
@@ -40,13 +39,14 @@ class DrinkCategoriesFragment : BaseFragment() {
 
         showProgressDialog()
 
-        viewModel.getCocktailsCategoriesRemote().singleObserve(viewLifecycleOwner) {
+        viewModel.drinkCategoriesLiveData.singleObserve(viewLifecycleOwner) {
             adapter.setData(it)
             hideProgressDialog()
         }
+    }
 
-        adapter.onCategoriesClick = {
-            findNavController().navigate(DrinkCategoriesFragmentDirections.toDrinkFragment(it))
-        }
+    override fun onDetach() {
+        super.onDetach()
+        viewModel.drinkCategoriesLiveData.postValue(adapter.getData())
     }
 }

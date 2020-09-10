@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.orlinskas.cocktail.R
 import com.orlinskas.cocktail.databinding.ActivityMainBinding
 import com.orlinskas.cocktail.extensions.launchActivity
+import com.orlinskas.cocktail.extensions.singleObserve
 import com.orlinskas.cocktail.viewmodel.MainViewModel
 
 class MainActivity : BaseActivity() {
@@ -26,20 +27,29 @@ class MainActivity : BaseActivity() {
         viewModel = getViewModel()
 
         hostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        hostFragment.navController.navigate(R.id.drinkCategoriesFragment)
+        hostFragment.navController.navigate(R.id.drinkFragment)
+
+        viewModel.getCocktailsCategoriesRemote().singleObserve(this) {
+            viewModel.drinkCategoriesLiveData.postValue(it)
+        }
+
+        binding.filterImage.setOnClickListener {
+            hostFragment.navController.navigate(R.id.drinkCategoriesFragment)
+        }
+
+        viewModel.onCategoriesChange = {
+            binding.title.text = it.name
+        }
     }
 
     override fun onBackPressed() {
-        if (hostFragment.navController.currentDestination?.id == R.id.drinkCategoriesFragment) {
+        if (hostFragment.navController.currentDestination?.id == R.id.drinkFragment) {
             finish()
         }
         super.onBackPressed()
     }
 
     companion object {
-
-        fun start(context: Context) =
-            context.launchActivity(MainActivity::class, Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
         fun startFromSplash(context: Context) =
             context.launchActivity(MainActivity::class)

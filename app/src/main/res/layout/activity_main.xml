@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/textPatternName"
+                    android:id="@+id/title"
                     style="@style/Text.SemiBold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -45,10 +45,9 @@
                     tools:text="Drinks" />
 
                 <ImageView
-                    android:id="@+id/title"
+                    android:id="@+id/filterImage"
                     android:layout_width="@dimen/size_filter_image"
                     android:layout_height="@dimen/size_filter_image"
-                    android:contentDescription="@null"
                     android:layout_marginEnd="@dimen/margin"
                     android:src="@drawable/ic_baseline_filter_list_24"
                     android:background="?attr/selectableItemBackgroundBorderless"

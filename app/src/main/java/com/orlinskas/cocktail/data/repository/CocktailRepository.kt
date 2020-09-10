@@ -1,7 +1,9 @@
 package com.orlinskas.cocktail.data.repository
 
 import com.orlinskas.cocktail.data.AppDatabase
+import com.orlinskas.cocktail.data.model.Categories
 import com.orlinskas.cocktail.data.model.Cocktail
+import com.orlinskas.cocktail.livedata.DrinkCategoriesLiveData
 import com.orlinskas.cocktail.network.client.CocktailApiClient
 import com.orlinskas.cocktail.network.toModel
 import com.orlinskas.cocktail.util.Wish
@@ -15,18 +17,13 @@ class CocktailRepository @Inject constructor(
 
     private val cocktailDao = appDatabase.cocktailDao()
 
-    fun getCocktails() = cocktailDao.getCocktails()
-
-    fun getCocktailsBy(id: String) = cocktailDao.getCocktailById(id)
-
-    fun setCocktails(cocktails: List<Cocktail>) = cocktailDao.insertCocktails(cocktails)
-
-    fun getRemoteCocktailsCategories(callback: ((Wish<List<String>>) -> (Unit))) {
+    fun getRemoteCocktailsCategories(callback: ((Wish<List<Categories>>) -> (Unit))) {
         io {
             val result = client.getCategories()
 
             result.onSuccess { response ->
-                callback.invoke(Wish(response.drinks.map { it.strCategory }))
+                val categories = response.drinks.map { Categories(it.strCategory, true) }
+                callback.invoke(Wish(categories))
             }
 
             result.onFailure {

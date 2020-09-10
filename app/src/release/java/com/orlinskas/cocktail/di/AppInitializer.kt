@@ -12,6 +12,6 @@ object AppInitializer {
     fun initCatalogDownloadInterceptors(builder: OkHttpClient.Builder) = builder
 
     fun onApplicationCreated(app: Application) {
-        Timber.plant(CrashlyticsTree())
+//        Timber.plant(CrashlyticsTree())
     }
 }

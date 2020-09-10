@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'project-report'
-apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 apply from: "$project.rootDir/dependencies.gradle"
 
@@ -43,7 +42,7 @@ android {
             minifyEnabled true
             shrinkResources true
 
-            manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
+            //manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             testProguardFile('testrules.pro')

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_home"
+    app:startDestination="@id/drinkFragment">
+
+    <activity
+        android:id="@+id/activityMain"
+        android:name="com.orlinskas.cocktail.ui.activity.MainActivity"
+        android:label="MainActivity"
+        tools:layout="@layout/activity_main">
+    </activity>
+
+    <fragment
+        android:id="@+id/drinkFragment"
+        android:name="com.orlinskas.cocktail.ui.fragment.DrinksFragment"
+        android:label="DrinkFragment"
+        tools:layout="@layout/fragment_drinks">
+        <action
+            android:id="@+id/toDrinkCategoriesFragment"
+            app:destination="@id/drinkCategoriesFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/drinkCategoriesFragment"
+        android:name="com.orlinskas.cocktail.ui.fragment.DrinkCategoriesFragment"
+        android:label="DrinkCategoriesFragment"
+        tools:layout="@layout/fragment_drink_categories">
+    </fragment>
+
+</navigation>

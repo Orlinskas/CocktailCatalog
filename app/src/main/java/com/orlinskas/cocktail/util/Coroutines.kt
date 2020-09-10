@@ -29,18 +29,3 @@ fun io(block: suspend CoroutineScope.() -> (Unit)) {
 
     IO.async(Dispatchers.IO, block = catchingBlock)
 }
-
-@Suppress("DeferredResultUnused")
-fun main(block: suspend CoroutineScope.() -> (Unit)) {
-    val catchingBlock: suspend CoroutineScope.() -> (Unit) = {
-        try {
-            block.invoke(this)
-        } catch (throwable: Throwable) {
-            Timber.e(throwable)
-            Handler(Looper.getMainLooper())
-                .post { throw throwable }
-        }
-    }
-
-    MAIN.async(Dispatchers.Main, block = catchingBlock)
-}

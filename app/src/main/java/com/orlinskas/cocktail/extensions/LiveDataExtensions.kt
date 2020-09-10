@@ -23,45 +23,6 @@ fun <T> LiveData<T>.singleObserve(lifecycleOwner: LifecycleOwner, observer: (T) 
     )
 }
 
-/**
- * Removes all previously registered observers for current lifecycle owner and live data
- * Callback returns null values if it was passed to live data
- */
-fun <T> LiveData<T>.singleObserveNullable(lifecycleOwner: LifecycleOwner, observer: (T) -> (Unit)) {
-    removeObservers(lifecycleOwner)
-    observe(
-        lifecycleOwner,
-        Observer {
-            observer.invoke(it)
-        }
-    )
-}
-
-/**
- * Removes all previously registered observers for current lifecycle owner and live data
- * Callback do not returns null values if it was passed to live data
- */
-fun <T> LiveData<T>.singleObserve(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
-    removeObservers(lifecycleOwner)
-    observe(lifecycleOwner, observer)
-}
-
-/**
- * Removes all previously registered observers for current lifecycle owner and live data
- * Callback do not returns null values if it was passed to live data
- * Removes value only once
- */
-fun <T> LiveData<T>.singleResult(lifecycleOwner: LifecycleOwner, block: (T) -> (Unit)) {
-    val holder = LifecycleHolder<T>()
-    holder.observer = Observer {
-        block.invoke(it)
-        holder.observer?.let { observer ->
-            removeObserver(observer)
-        }
-    }
-    observe(lifecycleOwner, holder.observer!!)
-}
-
 @Keep
 private data class LifecycleHolder<T>(var observer: Observer<T>? = null)
 

@@ -16,9 +16,3 @@ fun Fragment.toast(message: String) {
         Toast.makeText(it, message, Toast.LENGTH_SHORT).show()
     }
 }
-
-fun Fragment.toast(messageRes: Int) {
-    context?.let {
-        Toast.makeText(it, it.getString(messageRes), Toast.LENGTH_SHORT).show()
-    }
-}

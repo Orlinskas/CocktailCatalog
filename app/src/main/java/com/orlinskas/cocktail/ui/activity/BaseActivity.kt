@@ -27,16 +27,6 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(newBase)
-
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onResume() {
         if (isProgressDialogShow) {
             showProgressDialog()

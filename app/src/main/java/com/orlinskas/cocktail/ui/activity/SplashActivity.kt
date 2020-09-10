@@ -13,8 +13,6 @@ class SplashActivity : BaseActivity() {
     private val handler = Handler(Handler.Callback {
         if (it.arg1 == 1) {
             MainActivity.startFromSplash(this)
-        } else {
-            // send to other activity
         }
         true
     })
