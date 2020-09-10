@@ -1,10 +1,21 @@
 package com.orlinskas.cocktail.ui
 
+import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.google.android.material.textfield.TextInputLayout
-import com.orlinskas.cocktail.extensions.onTextChanged
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.orlinskas.cocktail.R
 
-@BindingAdapter("hideErrorsOnInputChange")
-fun hideErrorsOnInputChange(view: TextInputLayout, @Suppress("UNUSED_PARAMETER") value: Boolean) {
-    view.onTextChanged { view.error = null }
+@BindingAdapter("setImageUrlWithGlide")
+fun setImageUrlWithGlide(imageView: ImageView, url: String) = setImageUrl(imageView, url)
+
+private fun setImageUrl(imageView: ImageView, url: String) {
+    val options = RequestOptions()
+        .placeholder(R.drawable.ic_placeholder)
+        .error(R.drawable.ic_placeholder)
+
+    Glide.with(imageView.context)
+        .setDefaultRequestOptions(options)
+        .load(url)
+        .into(imageView)
 }

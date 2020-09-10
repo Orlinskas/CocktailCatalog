@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cocktail"
+            type="com.orlinskas.cocktail.data.model.Cocktail" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_half">
+
+            <ImageView
+                android:id="@+id/imageThumbnail"
+                android:layout_width="@dimen/size_drink_image"
+                android:layout_height="@dimen/size_drink_image"
+                android:layout_marginStart="@dimen/margin_half"
+                android:layout_marginTop="@dimen/margin_half"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_placeholder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImageUrlWithGlide="@{cocktail.imageUrl}" />
+
+            <TextView
+                android:id="@+id/textCode"
+                style="@style/Text.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_half"
+                android:text="@{cocktail.id}"
+                app:layout_constraintStart_toEndOf="@+id/imageThumbnail"
+                app:layout_constraintTop_toTopOf="@+id/imageThumbnail"
+                tools:text="24556" />
+
+            <TextView
+                android:id="@+id/textName"
+                style="@style/Text.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_half"
+                android:layout_marginBottom="@dimen/margin_half"
+                android:text="@{cocktail.name}"
+                android:textSize="@dimen/text_small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageThumbnail"
+                app:layout_constraintTop_toBottomOf="@+id/textCode"
+                tools:text="drink drink" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

@@ -21,10 +21,10 @@ interface CocktailDao {
     fun getCocktails(): LiveData<List<Cocktail>>
 
     @Query("SELECT * FROM ${Tables.COCKTAILS} WHERE id=:id")
-    fun getCocktailsByIdDirectly(id: Long): Cocktail
+    fun getCocktailsByIdDirectly(id: String): Cocktail
 
     @Query("SELECT * FROM ${Tables.COCKTAILS} WHERE id=:id")
-    fun getCocktailById(id: Long): LiveData<Cocktail>
+    fun getCocktailById(id: String): LiveData<Cocktail>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun updateCocktails(list: List<Cocktail>)
@@ -33,6 +33,6 @@ interface CocktailDao {
     fun clearCocktails()
 
     @Query("DELETE FROM ${Tables.COCKTAILS} WHERE id=:id")
-    fun removeCocktail(id: Long): Int
+    fun removeCocktail(id: String): Int
 
 }

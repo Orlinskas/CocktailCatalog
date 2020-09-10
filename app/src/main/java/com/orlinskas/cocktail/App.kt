@@ -2,6 +2,7 @@ package com.orlinskas.cocktail
 
 import android.app.Application
 import com.orlinskas.cocktail.di.AppModule
+import com.orlinskas.cocktail.di.DaggerAppComponent
 import com.orlinskas.cocktail.di.Injector
 
 class App : Application() {

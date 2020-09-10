@@ -28,6 +28,7 @@
     <dimen name="size_status_bar_height">24dp</dimen>
     <dimen name="size_divider_height">1dp</dimen>
 
-    <dimen name="size_product_image">64dp</dimen>
+    <dimen name="size_drink_image">100dp</dimen>
+    <dimen name="size_filter_image">30dp</dimen>
 
 </resources>

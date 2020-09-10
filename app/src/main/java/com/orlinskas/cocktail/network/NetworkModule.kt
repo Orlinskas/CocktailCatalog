@@ -3,7 +3,7 @@ package com.orlinskas.cocktail.network
 import com.google.gson.GsonBuilder
 import com.orlinskas.cocktail.network.api.CocktailApi
 import com.orlinskas.cocktail.network.interceptor.ConnectionInterceptor
-import com.sandiplus.b2b.network.interceptor.HeaderInterceptor
+import com.orlinskas.cocktail.network.interceptor.HeaderInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

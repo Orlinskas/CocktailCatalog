@@ -9,6 +9,14 @@ data class ErrorResponse(
     val message: String?
 )
 
+data class CategoriesResponse(
+    val drinks: List<Drink>
+)
+
+data class Drink(
+    val strCategory: String
+)
+
 data class DrinksResponse(
     val drinks: List<DrinkResponse>
 )
